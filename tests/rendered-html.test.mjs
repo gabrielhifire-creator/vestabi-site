@@ -68,6 +68,9 @@ test("keeps the public Pages pipeline reproducible and secret-free", async () =>
   assert.match(workflow, /pages:\s*write/);
   assert.match(workflow, /id-token:\s*write/);
   assert.match(workflow, /actions\/deploy-pages@[a-f0-9]{40}/);
+  assert.match(workflow, /pnpm\/action-setup@[a-f0-9]{40}/);
+  assert.match(workflow, /version: 11\.7\.0/);
+  assert.doesNotMatch(workflow, /corepack/);
   assert.match(workflow, /pnpm install --frozen-lockfile/);
   assert.match(workflow, /pnpm run export:github-pages/);
   assert.doesNotMatch(workflow, /secrets\.|gho_|github_pat_/i);

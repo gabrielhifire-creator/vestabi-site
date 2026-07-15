@@ -4,6 +4,8 @@ import { pathToFileURL } from "node:url";
 
 const root = process.cwd();
 const outputDir = path.join(root, "out", "github-pages");
+const mobileNavigationScriptTag =
+  '<script src="/mobile-navigation.js" defer></script>';
 
 const workerUrl = pathToFileURL(path.join(root, "dist", "server", "index.js"));
 workerUrl.searchParams.set("static-export", `${Date.now()}`);
@@ -38,13 +40,23 @@ html = html
     '<link rel="stylesheet" href="/styles.css">',
   )
   .replace("</head>", '<meta name="generator" content="Vesta static site"></head>')
+  .replace("</body>", `${mobileNavigationScriptTag}</body>`)
   .replace(/\sdata-precedence="[^"]*"/g, "")
   .replace(/\sdata-rsc-css-href="[^"]*"/g, "")
   .replace(/\scrossorigin=""/g, "")
   .replace(/\sclass="__variable_geist_[^"]*"/, "");
 
+const htmlWithoutLocalNavigation = html.replace(mobileNavigationScriptTag, "");
+const localNavigationScripts = html.match(
+  /<script src="\/mobile-navigation\.js" defer><\/script>/g,
+) ?? [];
+
+if (localNavigationScripts.length !== 1) {
+  throw new Error("Local mobile navigation script is missing or duplicated");
+}
+
 const leftovers = {
-  scripts: html.match(/<script\b/gi) ?? [],
+  scripts: htmlWithoutLocalNavigation.match(/<script\b/gi) ?? [],
   modulepreloads: html.match(/modulepreload/gi) ?? [],
   assets: [...html.matchAll(/.{0,80}\/assets\/.{0,120}/gi)].map((match) => match[0]),
   dataUrls: html.match(/data:(?:image|font)\//gi) ?? [],
@@ -75,6 +87,10 @@ await copyFile(
 await copyFile(
   path.join(root, "public", "icons", "envelope.svg"),
   path.join(outputDir, "icons", "envelope.svg"),
+);
+await copyFile(
+  path.join(root, "public", "mobile-navigation.js"),
+  path.join(outputDir, "mobile-navigation.js"),
 );
 await copyFile(
   path.join(root, "public", "robots.txt"),

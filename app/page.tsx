@@ -1,3 +1,5 @@
+import { MobileNavigation } from "./mobile-navigation";
+
 const whatsappHref =
   "https://wa.me/5571981995565?text=Ol%C3%A1%2C%20quero%20entender%20como%20a%20Vesta%20pode%20ajudar%20minha%20empresa%20a%20organizar%20dados%2C%20reduzir%20retrabalho%20e%20melhorar%20processos%20operacionais.";
 
@@ -86,7 +88,7 @@ export default function Home() {
         Ir para o conteúdo
       </a>
 
-      <header className="site-header">
+      <header className="site-header" data-mobile-navigation>
         <div className="shell header-inner">
           <a className="brand" href="#inicio" aria-label="Vesta - início">
             {/* Keep the approved brand asset untouched by image optimization. */}
@@ -120,6 +122,8 @@ export default function Home() {
               <span>Falar no WhatsApp</span>
             </a>
           </div>
+
+          <MobileNavigation emailHref={emailHref} />
         </div>
       </header>
 

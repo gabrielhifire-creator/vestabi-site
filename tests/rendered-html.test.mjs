@@ -37,6 +37,10 @@ test("server-renders the Vesta landing page", async () => {
   assert.match(html, /href="#como-ajudamos">Soluções<\/a>/);
   assert.match(html, /href="#metodo">Método<\/a>/);
   assert.match(html, /href="#faq">Perguntas<\/a>/);
+  assert.match(html, /aria-controls="mobile-menu-panel"/);
+  assert.match(html, /id="mobile-menu-panel"/);
+  assert.match(html, /data-mobile-menu-panel(?:="true")?[^>]*hidden=""/);
+  assert.doesNotMatch(html, /src="\/mobile-navigation\.js"/);
   assert.match(html, /https:\/\/wa\.me\/5571981995565/);
   assert.match(html, /mailto:contato@vestabi\.com/);
   assert.match(html, /rel="canonical" href="https:\/\/www\.vestabi\.com\/"/);
@@ -83,9 +87,12 @@ test("keeps the public Pages pipeline reproducible and secret-free", async () =>
 });
 
 test("keeps navigation affordance and FAQ legibility in the production source", async () => {
-  const [page, css, packageJson, rootFiles] = await Promise.all([
+  const [page, mobileComponent, css, mobileNavigation, exportScript, packageJson, rootFiles] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/mobile-navigation.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../public/mobile-navigation.js", import.meta.url), "utf8"),
+    readFile(new URL("../scripts/export-github-pages.mjs", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     readdir(new URL("../", import.meta.url)),
   ]);
@@ -94,6 +101,16 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
   assert.match(page, /href="#problema">Desafios<\/a>/);
   assert.match(page, /href="#como-ajudamos">Soluções<\/a>/);
   assert.match(page, /href="#faq">Perguntas<\/a>/);
+  assert.match(page, /<MobileNavigation emailHref=\{emailHref\} \/>/);
+  assert.match(mobileComponent, /^"use client";/);
+  assert.match(mobileComponent, /className="mobile-menu-trigger"/);
+  assert.match(mobileComponent, /aria-expanded=\{open\}/);
+  assert.match(mobileComponent, /aria-controls="mobile-menu-panel"/);
+  assert.match(mobileComponent, /className="mobile-menu-panel"/);
+  assert.match(mobileComponent, /hidden=\{!open\}/);
+  assert.match(mobileComponent, /className="mobile-menu-email"/);
+  assert.match(mobileComponent, /event\.key === "Escape"/);
+  assert.match(mobileComponent, /document\.addEventListener\("pointerdown"/);
 
   assert.match(css, /\.desktop-nav a\s*\{[^}]*min-height:\s*42px/s);
   assert.match(css, /\.desktop-nav a\s*\{[^}]*padding:\s*9px 12px/s);
@@ -111,6 +128,26 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
     css,
     /@media \(max-width:\s*860px\)[\s\S]*\.sticky-section-intro\s*\{[^}]*position:\s*static/s,
   );
+  assert.match(
+    css,
+    /@media \(max-width:\s*1080px\)[\s\S]*\.mobile-menu-trigger\s*\{[^}]*display:\s*inline-flex/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width:\s*1080px\)[\s\S]*\.mobile-menu-panel\s*\{[^}]*display:\s*block/s,
+  );
+  assert.match(css, /\.mobile-menu-link\s*\{[^}]*min-height:\s*52px/s);
+  assert.match(css, /\.mobile-menu-panel\[hidden\]\s*\{[^}]*display:\s*none/s);
+
+  assert.match(mobileNavigation, /aria-expanded/);
+  assert.match(mobileNavigation, /pointerdown/);
+  assert.match(mobileNavigation, /event\.key === "Escape"/);
+  assert.match(mobileNavigation, /closest\("a"\)/);
+  assert.match(mobileNavigation, /matchMedia\("\(min-width: 1081px\)"\)/);
+  assert.match(mobileNavigation, /addListener\(handleBreakpointChange\)/);
+  assert.doesNotMatch(mobileNavigation, /https?:\/\//);
+  assert.match(exportScript, /mobile-navigation\.js/);
+  assert.match(exportScript, /Local mobile navigation script is missing or duplicated/);
 
   assert.match(packageJson, /"packageManager": "pnpm@11\.7\.0"/);
   assert.ok(rootFiles.includes("pnpm-lock.yaml"));

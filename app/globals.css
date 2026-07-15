@@ -550,8 +550,7 @@ h1 {
 }
 
 .process-intro {
-  position: sticky;
-  top: 140px;
+  position: static;
 }
 
 .process-intro h2,
@@ -883,10 +882,6 @@ summary:focus-visible {
   .trust-grid,
   .faq-layout {
     gap: 54px;
-  }
-
-  .process-intro {
-    position: static;
   }
 
   .applications-layout .section-heading,

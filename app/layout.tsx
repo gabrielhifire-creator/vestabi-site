@@ -55,7 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={geistSans.variable}>{children}</body>
+      <body className={geistSans.variable}>
+        {children}
+        <script src="/mobile-navigation.js" defer />
+      </body>
     </html>
   );
 }

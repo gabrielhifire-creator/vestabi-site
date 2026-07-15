@@ -86,7 +86,7 @@ export default function Home() {
         Ir para o conteúdo
       </a>
 
-      <header className="site-header">
+      <header className="site-header" data-mobile-navigation>
         <div className="shell header-inner">
           <a className="brand" href="#inicio" aria-label="Vesta - início">
             {/* Keep the approved brand asset untouched by image optimization. */}
@@ -120,7 +120,47 @@ export default function Home() {
               <span>Falar no WhatsApp</span>
             </a>
           </div>
+
+          <button
+            className="mobile-menu-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu-panel"
+            aria-label="Abrir menu de navegação"
+            data-mobile-menu-trigger
+          >
+            <span className="mobile-menu-icon" aria-hidden="true" />
+            <span>Menu</span>
+          </button>
         </div>
+
+        <nav
+          className="mobile-menu-panel"
+          id="mobile-menu-panel"
+          aria-label="Navegação móvel"
+          data-mobile-menu-panel
+          hidden
+        >
+          <div className="mobile-menu-grid">
+            <a className="mobile-menu-link" href="#problema">
+              Desafios
+            </a>
+            <a className="mobile-menu-link" href="#como-ajudamos">
+              Soluções
+            </a>
+            <a className="mobile-menu-link" href="#metodo">
+              Método
+            </a>
+            <a className="mobile-menu-link" href="#faq">
+              Perguntas
+            </a>
+          </div>
+
+          <a className="mobile-menu-email" href={emailHref}>
+            <ContactIcon type="email" />
+            <span>Enviar e-mail</span>
+          </a>
+        </nav>
       </header>
 
       <main id="conteudo">

@@ -393,14 +393,32 @@ h1 {
   border-top: 1px solid var(--line);
 }
 
-.diagnostic-list span,
-.problem-item > span,
-.solution-number,
-.trust-points article > span {
+.diagnostic-list span {
   color: var(--copper);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 750;
   letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.problem-item > span,
+.solution-number,
+.application-list span,
+.trust-points article > span {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184, 112, 56, 0.34);
+  border-radius: 9px;
+  background: rgba(184, 112, 56, 0.07);
+  color: var(--copper);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
 .diagnostic-list strong {
@@ -499,7 +517,7 @@ h1 {
 }
 
 .solution-card h3 {
-  margin: 48px 0 14px;
+  margin: 36px 0 14px;
   color: var(--navy);
   font-size: 21px;
   font-weight: 620;
@@ -562,10 +580,20 @@ h1 {
 }
 
 .process-number {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(209, 151, 104, 0.5);
+  border-radius: 9px;
+  background: rgba(209, 151, 104, 0.09);
   color: #d19768;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 750;
-  letter-spacing: 0.1em;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
 .process-list h3 {
@@ -604,12 +632,6 @@ h1 {
   align-items: center;
   gap: 16px;
   border-bottom: 1px solid var(--line);
-}
-
-.application-list span {
-  color: var(--copper);
-  font-size: 11px;
-  font-weight: 750;
 }
 
 .application-list strong {

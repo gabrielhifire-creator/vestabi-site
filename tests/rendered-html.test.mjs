@@ -102,3 +102,17 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
   assert.ok(rootFiles.includes("pnpm-lock.yaml"));
   assert.ok(!rootFiles.includes("package-lock.json"));
 });
+
+test("keeps numbered sequences legible and visually consistent", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(css, /\.diagnostic-list span\s*\{[^}]*font-size:\s*12px/s);
+  assert.match(
+    css,
+    /\.problem-item > span,[\s\S]*\.trust-points article > span\s*\{[^}]*width:\s*32px[^}]*height:\s*32px[^}]*font-size:\s*14px/s,
+  );
+  assert.match(
+    css,
+    /\.process-number\s*\{[^}]*width:\s*36px[^}]*height:\s*36px[^}]*font-size:\s*15px/s,
+  );
+});

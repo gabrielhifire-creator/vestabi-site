@@ -405,14 +405,6 @@ h1 {
 .solution-number,
 .application-list span,
 .trust-points article > span {
-  display: inline-flex;
-  width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(184, 112, 56, 0.34);
-  border-radius: 9px;
-  background: rgba(184, 112, 56, 0.07);
   color: var(--copper);
   font-size: 14px;
   font-weight: 750;
@@ -581,14 +573,6 @@ h1 {
 }
 
 .process-number {
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(209, 151, 104, 0.5);
-  border-radius: 9px;
-  background: rgba(209, 151, 104, 0.09);
   color: #d19768;
   font-size: 15px;
   font-weight: 750;
@@ -838,9 +822,6 @@ summary:focus-visible {
     border-bottom: 1px solid var(--line);
   }
 
-  .solution-card h3 {
-    margin-top: 48px;
-  }
 }
 
 @media (max-width: 860px) {

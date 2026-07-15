@@ -119,14 +119,22 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
 
 test("keeps numbered sequences legible and visually consistent", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const lightNumberStyles = css.match(
+    /\.problem-item > span,[\s\S]*\.trust-points article > span\s*\{[^}]*\}/s,
+  )?.[0];
+  const processNumberStyles = css.match(/\.process-number\s*\{[^}]*\}/s)?.[0];
 
   assert.match(css, /\.diagnostic-list span\s*\{[^}]*font-size:\s*12px/s);
-  assert.match(
-    css,
-    /\.problem-item > span,[\s\S]*\.trust-points article > span\s*\{[^}]*width:\s*32px[^}]*height:\s*32px[^}]*font-size:\s*14px/s,
+  assert.ok(lightNumberStyles);
+  assert.match(lightNumberStyles, /font-size:\s*14px/);
+  assert.doesNotMatch(
+    lightNumberStyles,
+    /(?:^|\n)\s*(?:width|height|border(?:-\w+)?|background(?:-\w+)?)\s*:/m,
   );
-  assert.match(
-    css,
-    /\.process-number\s*\{[^}]*width:\s*36px[^}]*height:\s*36px[^}]*font-size:\s*15px/s,
+  assert.ok(processNumberStyles);
+  assert.match(processNumberStyles, /font-size:\s*15px/);
+  assert.doesNotMatch(
+    processNumberStyles,
+    /(?:^|\n)\s*(?:width|height|border(?:-\w+)?|background(?:-\w+)?)\s*:/m,
   );
 });

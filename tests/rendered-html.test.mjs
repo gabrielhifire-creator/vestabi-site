@@ -99,7 +99,18 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
   assert.match(css, /\.desktop-nav a\s*\{[^}]*padding:\s*9px 12px/s);
   assert.match(css, /\.desktop-nav a:hover,[\s\S]*box-shadow:\s*inset 0 -2px 0/s);
   assert.match(css, /\.faq-list details p\s*\{[^}]*line-height:\s*1\.68/s);
-  assert.match(css, /\.process-intro\s*\{[^}]*position:\s*static/s);
+  assert.match(
+    page,
+    /className="process-intro sticky-section-intro"[\s\S]*className="section-heading sticky-section-intro"[\s\S]*className="sticky-section-intro"[\s\S]*className="section-heading faq-heading sticky-section-intro"/s,
+  );
+  assert.match(
+    css,
+    /\.sticky-section-intro\s*\{[^}]*position:\s*sticky[^}]*top:\s*140px/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width:\s*860px\)[\s\S]*\.sticky-section-intro\s*\{[^}]*position:\s*static/s,
+  );
 
   assert.match(packageJson, /"packageManager": "pnpm@11\.7\.0"/);
   assert.ok(rootFiles.includes("pnpm-lock.yaml"));

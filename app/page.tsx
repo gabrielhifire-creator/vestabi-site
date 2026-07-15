@@ -229,7 +229,7 @@ export default function Home() {
 
         <section className="process section-anchor" id="metodo">
           <div className="shell process-layout">
-            <div className="process-intro">
+            <div className="process-intro sticky-section-intro">
               <p className="section-label section-label--light">Como funciona</p>
               <h2>Cinco etapas para uma primeira entrega útil.</h2>
               <p>
@@ -254,7 +254,7 @@ export default function Home() {
 
         <section className="applications section-anchor" id="aplicacoes">
           <div className="shell applications-layout">
-            <div className="section-heading">
+            <div className="section-heading sticky-section-intro">
               <p className="section-label">Aplicações práticas</p>
               <h2>Onde a Vesta atua na operação.</h2>
               <p>
@@ -275,7 +275,7 @@ export default function Home() {
 
         <section className="trust">
           <div className="shell trust-grid">
-            <div>
+            <div className="sticky-section-intro">
               <p className="section-label">Confiança pelo método</p>
               <h2>Começar de forma controlada. Medir o que importa.</h2>
             </div>
@@ -308,7 +308,7 @@ export default function Home() {
 
         <section className="faq section-anchor" id="faq">
           <div className="shell faq-layout">
-            <div className="section-heading faq-heading">
+            <div className="section-heading faq-heading sticky-section-intro">
               <p className="section-label">Perguntas frequentes</p>
               <h2>Antes da primeira conversa.</h2>
             </div>

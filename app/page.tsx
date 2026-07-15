@@ -5,48 +5,48 @@ const emailHref =
   "mailto:contato@vestabi.com?subject=Contato%20pelo%20site%20da%20Vesta";
 
 const problems = [
-  "Demandas repetitivas sobrecarregam o atendimento",
-  "Planilhas, sistemas e conversas não se conectam",
-  "Relatórios e protocolos consomem horas de trabalho manual",
-  "Gestores decidem tarde e sem visão completa",
+  "Demandas repetitivas sobrecarregam as equipes de atendimento",
+  "Planilhas, sistemas e conversas permanecem desconectados",
+  "Relatórios e protocolos exigem horas de trabalho manual",
+  "A gestão decide com atraso e visão incompleta",
 ];
 
 const solutions = [
   {
     number: "01",
     title: "Diagnóstico operacional",
-    text: "Mapeamos gargalos, padrões e riscos no fluxo real.",
+    text: "Mapeamos gargalos, padrões e riscos nos processos atuais.",
   },
   {
     number: "02",
     title: "Organização dos dados",
-    text: "Conectamos dados úteis em uma leitura simples para a gestão.",
+    text: "Organizamos dados relevantes em uma visão clara para a gestão.",
   },
   {
     number: "03",
     title: "Automação assistida",
-    text: "Reduzimos tarefas repetitivas sem retirar a supervisão humana.",
+    text: "Reduzimos tarefas repetitivas, preservando a supervisão humana.",
   },
   {
     number: "04",
     title: "Monitoramento recorrente",
-    text: "Geramos alertas, indicadores e resumos gerenciais.",
+    text: "Disponibilizamos alertas, indicadores e resumos gerenciais para acompanhamento contínuo.",
   },
 ];
 
 const process = [
-  ["Entender", "Conhecemos o fluxo, as pessoas e o objetivo."],
-  ["Analisar", "Localizamos dados, lacunas e retrabalho."],
-  ["Priorizar", "Escolhemos um gargalo relevante para começar."],
-  ["Implantar", "Colocamos uma primeira rotina em uso assistido."],
-  ["Evoluir", "Ajustamos a solução a partir do uso real."],
+  ["Entender", "Compreendemos o processo, as pessoas envolvidas e o objetivo."],
+  ["Analisar", "Identificamos dados disponíveis, lacunas e pontos de retrabalho."],
+  ["Priorizar", "Selecionamos o gargalo de maior relevância para iniciar."],
+  ["Implantar", "Colocamos a primeira rotina em operação de forma assistida."],
+  ["Evoluir", "Aprimoramos a solução com base no uso e nos resultados observados."],
 ];
 
 const applications = [
-  "Análise de atendimentos para identificar demandas repetitivas",
+  "Análise de atendimentos para identificar demandas recorrentes",
   "Organização de relatórios e protocolos recorrentes",
-  "Alertas de risco operacional",
-  "Resumos executivos para gestores",
+  "Alertas para riscos operacionais",
+  "Elaboração de resumos executivos para gestores",
   "Automação assistida de rotinas administrativas",
 ];
 
@@ -54,22 +54,22 @@ const faqs = [
   {
     question: "A Vesta substitui o sistema que minha empresa já usa?",
     answer:
-      "Não. A Vesta trabalha sobre os fluxos, sistemas e dados que a empresa já possui.",
+      "Não. A Vesta atua sobre os processos, sistemas e dados que a empresa já utiliza.",
   },
   {
-    question: "É preciso ter os dados organizados ou perfeitos?",
+    question: "É necessário ter os dados organizados?",
     answer:
-      "Não. Organizar o que existe e identificar lacunas faz parte do diagnóstico.",
+      "Não. A organização das informações existentes e a identificação de lacunas fazem parte do diagnóstico.",
   },
   {
-    question: "A Vesta substitui pessoas?",
+    question: "A Vesta substitui profissionais?",
     answer:
-      "Não. O objetivo é reduzir retrabalho e preparar melhor o trabalho humano.",
+      "Não. O objetivo é reduzir tarefas repetitivas e disponibilizar informações mais claras para apoiar o trabalho das equipes.",
   },
   {
     question: "Como a Vesta lida com dados sensíveis?",
     answer:
-      "Com acesso mínimo necessário e preferência por resultados agregados.",
+      "Adotamos o princípio do acesso mínimo necessário e, sempre que possível, trabalhamos com informações agregadas.",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Home() {
           </a>
 
           <nav className="desktop-nav" aria-label="Navegação principal">
-            <a href="#problema">Dores</a>
+            <a href="#problema">Desafios</a>
             <a href="#como-ajudamos">Soluções</a>
             <a href="#metodo">Método</a>
             <a href="#faq">Perguntas</a>
@@ -130,8 +130,8 @@ export default function Home() {
               <p className="eyebrow">Inteligência operacional aplicada</p>
               <h1>Menos retrabalho. Mais clareza para operar.</h1>
               <p className="hero-lead">
-                A Vesta identifica gargalos, organiza dados e cria rotinas para
-                reduzir trabalho manual e apoiar a gestão.
+                A Vesta identifica gargalos, organiza dados e estrutura rotinas
+                para reduzir o trabalho manual e apoiar decisões de gestão.
               </p>
 
               <div className="hero-actions">
@@ -151,29 +151,31 @@ export default function Home() {
               </div>
 
               <p className="hero-note">
-                Em uma conversa, mapeamos o gargalo e uma primeira rotina possível.
+                Na primeira conversa, identificamos o principal gargalo e um
+                ponto de partida viável.
               </p>
             </div>
 
             <aside className="diagnostic-card" aria-label="Abordagem inicial da Vesta">
               <p className="card-kicker">Ponto de partida</p>
-              <h2>Começamos pelo fluxo real.</h2>
+              <h2>Começamos pela realidade da operação.</h2>
               <p>
-                Entendemos onde o tempo se perde e qual entrega pode gerar clareza primeiro.
+                Analisamos quais etapas consomem mais tempo e qual iniciativa
+                pode gerar valor primeiro.
               </p>
 
               <ol className="diagnostic-list">
                 <li>
                   <span>01</span>
-                  <strong>Onde o tempo se perde?</strong>
+                  <strong>Em quais etapas a operação perde mais tempo?</strong>
                 </li>
                 <li>
                   <span>02</span>
-                  <strong>Quais dados já existem?</strong>
+                  <strong>Quais dados estão disponíveis?</strong>
                 </li>
                 <li>
                   <span>03</span>
-                  <strong>O que deve melhorar primeiro?</strong>
+                  <strong>Qual melhoria deve ser priorizada?</strong>
                 </li>
               </ol>
             </aside>
@@ -183,11 +185,12 @@ export default function Home() {
         <section className="problem section-anchor" id="problema">
           <div className="shell">
             <div className="section-heading section-heading--wide">
-              <p className="section-label">O problema</p>
-              <h2>Dados existem. Visibilidade, nem sempre.</h2>
+              <p className="section-label">Desafios operacionais</p>
+              <h2>Os dados existem. A visibilidade ainda é limitada.</h2>
               <p>
-                Quando atendimentos, planilhas, relatórios e conversas não se conectam,
-                o custo aparece em tempo perdido, decisões tardias e retrabalho.
+                Quando informações de atendimentos, planilhas, relatórios e
+                conversas não se conectam, o impacto se traduz em perda de tempo,
+                decisões tardias e retrabalho.
               </p>
             </div>
 
@@ -208,7 +211,7 @@ export default function Home() {
               <p className="section-label">Como a Vesta ajuda</p>
               <h2>Da informação dispersa a uma rotina de gestão.</h2>
               <p>
-                Diagnóstico e tecnologia aplicados a um problema concreto da operação.
+                Diagnóstico e tecnologia aplicados a desafios concretos da operação.
               </p>
             </div>
 
@@ -228,9 +231,10 @@ export default function Home() {
           <div className="shell process-layout">
             <div className="process-intro">
               <p className="section-label section-label--light">Como funciona</p>
-              <h2>Cinco passos. Uma primeira entrega útil.</h2>
+              <h2>Cinco etapas para uma primeira entrega útil.</h2>
               <p>
-                Entender, priorizar e implantar sem começar por software pronto.
+                A tecnologia é definida a partir da necessidade operacional,
+                não o contrário.
               </p>
             </div>
 
@@ -252,9 +256,9 @@ export default function Home() {
           <div className="shell applications-layout">
             <div className="section-heading">
               <p className="section-label">Aplicações práticas</p>
-              <h2>Onde a Vesta entra no dia a dia.</h2>
+              <h2>Onde a Vesta atua na operação.</h2>
               <p>
-                Exemplos concretos, adaptáveis a diferentes operações.
+                Exemplos de aplicação adaptáveis a diferentes contextos operacionais.
               </p>
             </div>
 
@@ -273,7 +277,7 @@ export default function Home() {
           <div className="shell trust-grid">
             <div>
               <p className="section-label">Confiança pelo método</p>
-              <h2>Começar pequeno. Medir o que importa.</h2>
+              <h2>Começar de forma controlada. Medir o que importa.</h2>
             </div>
 
             <div className="trust-points">
@@ -281,21 +285,21 @@ export default function Home() {
                 <span>01</span>
                 <div>
                   <h3>Implantação assistida</h3>
-                  <p>Uso gradual, acompanhado e ajustável.</p>
+                  <p>Implantação gradual, acompanhada e ajustável.</p>
                 </div>
               </article>
               <article>
                 <span>02</span>
                 <div>
                   <h3>Acesso mínimo necessário</h3>
-                  <p>Dados tratados conforme a necessidade do projeto.</p>
+                  <p>Acesso restrito aos dados necessários para cada projeto.</p>
                 </div>
               </article>
               <article>
                 <span>03</span>
                 <div>
-                  <h3>Medição sem promessa vazia</h3>
-                  <p>Uso e ganho operacional observados na prática.</p>
+                  <h3>Medição baseada em resultados</h3>
+                  <p>Resultados operacionais acompanhados com critérios objetivos.</p>
                 </div>
               </article>
             </div>
@@ -324,9 +328,10 @@ export default function Home() {
           <div className="shell final-cta-inner">
             <div>
               <p className="section-label section-label--light">Próximo passo</p>
-              <h2>Qual rotina mais consome tempo hoje?</h2>
+              <h2>Qual processo mais consome tempo na sua operação?</h2>
               <p>
-                Conte onde estão os gargalos. A primeira conversa identifica um ponto de partida.
+                Compartilhe os principais gargalos. Na primeira conversa,
+                identificamos um ponto de partida viável.
               </p>
             </div>
 

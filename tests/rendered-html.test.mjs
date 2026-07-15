@@ -31,7 +31,9 @@ test("server-renders the Vesta landing page", async () => {
   const html = await response.text();
   assert.match(html, /<title>Vesta \| Inteligência operacional aplicada<\/title>/i);
   assert.match(html, /Menos retrabalho\. Mais clareza para operar\./);
-  assert.match(html, /href="#problema">Dores<\/a>/);
+  assert.match(html, /Em quais etapas a operação perde mais tempo\?/);
+  assert.doesNotMatch(html, /Onde o tempo se perde\?/);
+  assert.match(html, /href="#problema">Desafios<\/a>/);
   assert.match(html, /href="#como-ajudamos">Soluções<\/a>/);
   assert.match(html, /href="#metodo">Método<\/a>/);
   assert.match(html, /href="#faq">Perguntas<\/a>/);
@@ -89,7 +91,7 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
   ]);
 
   assert.match(page, /<nav className="desktop-nav"/);
-  assert.match(page, /href="#problema">Dores<\/a>/);
+  assert.match(page, /href="#problema">Desafios<\/a>/);
   assert.match(page, /href="#como-ajudamos">Soluções<\/a>/);
   assert.match(page, /href="#faq">Perguntas<\/a>/);
 
@@ -97,6 +99,7 @@ test("keeps navigation affordance and FAQ legibility in the production source", 
   assert.match(css, /\.desktop-nav a\s*\{[^}]*padding:\s*9px 12px/s);
   assert.match(css, /\.desktop-nav a:hover,[\s\S]*box-shadow:\s*inset 0 -2px 0/s);
   assert.match(css, /\.faq-list details p\s*\{[^}]*line-height:\s*1\.68/s);
+  assert.match(css, /\.process-intro\s*\{[^}]*position:\s*static/s);
 
   assert.match(packageJson, /"packageManager": "pnpm@11\.7\.0"/);
   assert.ok(rootFiles.includes("pnpm-lock.yaml"));

@@ -1,3 +1,5 @@
+import { MobileNavigation } from "./mobile-navigation";
+
 const whatsappHref =
   "https://wa.me/5571981995565?text=Ol%C3%A1%2C%20quero%20entender%20como%20a%20Vesta%20pode%20ajudar%20minha%20empresa%20a%20organizar%20dados%2C%20reduzir%20retrabalho%20e%20melhorar%20processos%20operacionais.";
 
@@ -121,46 +123,8 @@ export default function Home() {
             </a>
           </div>
 
-          <button
-            className="mobile-menu-trigger"
-            type="button"
-            aria-expanded="false"
-            aria-controls="mobile-menu-panel"
-            aria-label="Abrir menu de navegação"
-            data-mobile-menu-trigger
-          >
-            <span className="mobile-menu-icon" aria-hidden="true" />
-            <span>Menu</span>
-          </button>
+          <MobileNavigation emailHref={emailHref} />
         </div>
-
-        <nav
-          className="mobile-menu-panel"
-          id="mobile-menu-panel"
-          aria-label="Navegação móvel"
-          data-mobile-menu-panel
-          hidden
-        >
-          <div className="mobile-menu-grid">
-            <a className="mobile-menu-link" href="#problema">
-              Desafios
-            </a>
-            <a className="mobile-menu-link" href="#como-ajudamos">
-              Soluções
-            </a>
-            <a className="mobile-menu-link" href="#metodo">
-              Método
-            </a>
-            <a className="mobile-menu-link" href="#faq">
-              Perguntas
-            </a>
-          </div>
-
-          <a className="mobile-menu-email" href={emailHref}>
-            <ContactIcon type="email" />
-            <span>Enviar e-mail</span>
-          </a>
-        </nav>
       </header>
 
       <main id="conteudo">

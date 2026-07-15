@@ -549,8 +549,10 @@ h1 {
   color: #d19768;
 }
 
-.process-intro {
-  position: static;
+.sticky-section-intro {
+  position: sticky;
+  top: 140px;
+  align-self: start;
 }
 
 .process-intro h2,
@@ -882,6 +884,10 @@ summary:focus-visible {
   .trust-grid,
   .faq-layout {
     gap: 54px;
+  }
+
+  .sticky-section-intro {
+    position: static;
   }
 
   .applications-layout .section-heading,
